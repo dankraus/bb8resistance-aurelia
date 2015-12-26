@@ -1,0 +1,16 @@
+<template>
+	<div class="well">
+		<h3>${selectedStore.storeName}<br><small>${selectedStore.formattedAddress}</small></h3>
+		<form submit.trigger="submit()">
+			<div class="form-group">
+				<label for="resistanceAgentName">Your Agent Name</label>
+				<input type="text" class="form-control" name="resistanceAgentName" value.bind="agentName">
+			</div>
+			<div class="form-group">
+				<label for="resistancePhotoUpload">Photo</label>
+				<input type="file" name="resistancePhotoUpload" accept="image/*" files.bind="photo">
+			</div>
+			<button type="submit" class="btn btn-success">Join the Resistance!</button>
+		</form>
+	</div>
+</template>

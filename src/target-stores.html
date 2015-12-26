@@ -1,0 +1,17 @@
+<template>
+  <require from='./google-map'></require>
+  <require from='./new-resistance-form'></require>
+  <require from='./resistances.html'></require>
+
+  <section class="au-animate">
+    <h2>${heading}</h2>
+
+    <new-resistance-form if.bind="isFormVisible" selected-store.bind="selectedStore"></new-resistance-form>
+
+    <google-map markers.bind="targetStoreGoogleMapMarkers"></google-map>
+
+    <div class="row au-stagger">
+      <resistances resistances.bind="selectedStoreResistances"></resistances>
+    </div>
+  </section>
+</template>
