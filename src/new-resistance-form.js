@@ -3,16 +3,16 @@ import {ResistanceService} from './ResistanceService.js';
 
 @inject(ResistanceService)
 export class NewResistanceForm {
-	@bindable selectedStore;
+  @bindable selectedStore;
 
-	agentName = "";
-	photo = "";
+  agentName = '';
+  photo = '';
 
-	constructor(ResistanceService){
-		this.resistanceService = ResistanceService;
-	}
+  constructor(resistanceService) {
+    this.resistanceService = resistanceService;
+  }
 
-	submit() {
-		this.resistanceService.create(this.selectedStore.storeNumber, this.agentName, this.photo);
-	}
+  submit() {
+    this.resistanceService.create(this.selectedStore.storeNumber, this.agentName, this.photo);
+  }
 }
