@@ -24,13 +24,19 @@ body {
 }
 
 .page-host {
-  position: absolute;
   left: 0;
   right: 0;
-  top: 50px;
+  top: 10px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+footer {
+  margin-top:20px;
+  font-size: 10px;
+  color: gray;
+  text-align: center;
 }
 
 @media print {
@@ -125,6 +131,14 @@ div.au-stagger {
   -moz-border-radius: 50%;
   border-radius: 50%;
   border: 2px #FFF solid;
+}
+
+.resistance .card {
+  padding: 5px;
+}
+
+.resistance .card img {
+  width: 100%;
 }
 
 /* animation definitions */

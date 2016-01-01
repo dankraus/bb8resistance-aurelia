@@ -6,17 +6,18 @@ import * as HttpClient from 'aurelia-http-client';
 export class ResistanceService {
   constructor(fetchClient, httpClient) {
     this.fetchClient = new fetchClient.HttpClient();
-    this.Json = fetchClient.Json;
+    this.Json = fetchClient.json;
     this.httpClient = new httpClient.HttpClient();
 
     this.fetchClient.configure(config => {
       config
         .useStandardConfiguration()
-        // .withBaseUrl('http://bb8-resistance-api.azurewebsites.net/api/');
-        .withBaseUrl('http://192.168.1.135:3005/api/');
+        .withBaseUrl('http://bb8-resistance-api.azurewebsites.net/api/');
+        // .withBaseUrl('http://192.168.1.135:3005/api/');
     });
 
-    this.httpClient.configure(config => config.withBaseUrl('http://192.168.1.135:3005/api/'));
+    this.httpClient.configure(config => config.withBaseUrl('http://bb8-resistance-api.azurewebsites.net/api/'));
+    // this.httpClient.configure(config => config.withBaseUrl('http://192.168.1.135:3005/api/'));
   }
 
   findAll() {
@@ -29,21 +30,16 @@ export class ResistanceService {
           .then(response => response.json());
   }
 
-  create(storeNumber, agentName, image) {
-    let imageUrl = '';
-    // this.createResistance("storeNumber", "agentName", "imageUrl")
-    this.uploadImage(image)
-      .then(uploadResponse => {
-        if (uploadResponse.isSuccess) {
-          console.log(uploadResponse.content.url);
-          imageUrl = uploadResponse.content.url;
+  getStats() {
+    return this.fetchClient.fetch(`Resistances/Stats`)
+          .then(response => response.json());
+  }
 
-          this.createResistance(storeNumber, agentName, imageUrl)
-            .then(createResponse =>{
-              console.log(createResponse);
-            });
-        }
-      });
+  create(storeNumber, agentName, image) {
+    return this.uploadImage(image)
+      .then(uploadResponse => uploadResponse.content.url)
+      .then(imageUrl => this.createResistance(storeNumber, agentName, imageUrl))
+      .then(response => response.json());
   }
 
   uploadImage(image) {

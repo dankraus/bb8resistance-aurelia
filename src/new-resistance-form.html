@@ -10,7 +10,8 @@
 				<label for="resistancePhotoUpload">Photo</label>
 				<input type="file" name="resistancePhotoUpload" accept="image/*" files.bind="photo">
 			</div>
-			<button type="submit" class="btn btn-success">Join the Resistance!</button>
+			<button show.bind="!isSubmitting" type="submit" class="btn btn-success">Join the Resistance!</button>
+			<p show.bind="isSubmitting">Submitting...</p>
 		</form>
 	</div>
 </template>

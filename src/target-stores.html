@@ -1,16 +1,24 @@
 <template>
   <require from='./google-map'></require>
   <require from='./new-resistance-form'></require>
-  <require from='./resistances.html'></require>
+  <require from='./resistances'></require>
 
   <section class="au-animate">
-    <h2>${heading}</h2>
+    <h2>The BB-8 Resistance</h2>
+    <p>Click a Target store map marker and upload your resistance photo. Touch the BB-8 display! Join the other ${resistanceCount} agents!</p>
 
-    <new-resistance-form if.bind="isFormVisible" selected-store.bind="selectedStore"></new-resistance-form>
+    <div class="row">
+      <div class="col-md-6">
+        <google-map markers.bind="targetStoreGoogleMapMarkers"></google-map>
+      </div>
 
-    <google-map markers.bind="targetStoreGoogleMapMarkers"></google-map>
+      <div class="col-md-6">
+        <h2 if.bind="isLoading">Loading...</h2>
+        <new-resistance-form if.bind="isFormVisible" selected-store.bind="selectedStore"></new-resistance-form>
+      </div>
+    </div>
 
-    <div class="row au-stagger">
+    <div class="row">
       <resistances resistances.bind="selectedStoreResistances"></resistances>
     </div>
   </section>

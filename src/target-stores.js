@@ -9,10 +9,11 @@ import 'fetch';
 @inject(EventAggregator, TargetStoresService, ResistanceService)
 export class TargetStores {
 
-  heading = 'Target Stores';
   targetStoreGoogleMapMarkers = [];
   selectedStore = {};
   selectedStoreResistances = [];
+  resistanceCount = 0;
+  isLoading = true;
   isFormVisible = false;
 
 
@@ -33,11 +34,15 @@ export class TargetStores {
     this.targetStoresService.findAll()
       .then(stores => {
         this.targetStoreGoogleMapMarkers = stores.map(store => {
-          if (store.coordinates !== undefined) {
+          if (store.coordinates !== null && (store.coordinates.latitude !== null && store.coordinates.longitude !== null) ) {
             return new TargetStoreGoogleMapMarker(store);
           }
         });
-      });
-  }
 
+        this.isLoading = false;
+      });
+
+    this.resistanceService.getStats()
+      .then(stats => this.resistanceCount = stats.totalCount);
+  }
 }

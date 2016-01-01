@@ -29,6 +29,7 @@ System.config({
       "nav-bar.html!github:systemjs/plugin-text@0.0.3",
       "new-resistance-form",
       "new-resistance-form.html!github:systemjs/plugin-text@0.0.3",
+      "resistances",
       "resistances.html!github:systemjs/plugin-text@0.0.3",
       "target-stores",
       "target-stores.html!github:systemjs/plugin-text@0.0.3",

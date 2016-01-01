@@ -1,18 +1,28 @@
 import {inject, bindable} from 'aurelia-framework';
+import {EventAggregator} from 'aurelia-event-aggregator';
 import {ResistanceService} from './ResistanceService.js';
 
-@inject(ResistanceService)
+@inject(EventAggregator, ResistanceService)
 export class NewResistanceForm {
   @bindable selectedStore;
 
   agentName = '';
   photo = '';
+  isSubmitting = false;
 
-  constructor(resistanceService) {
+  constructor(ea, resistanceService) {
+    this.ea = ea;
     this.resistanceService = resistanceService;
   }
 
   submit() {
-    this.resistanceService.create(this.selectedStore.storeNumber, this.agentName, this.photo);
+    this.isSubmitting = true;
+    this.resistanceService.create(this.selectedStore.storeNumber, this.agentName, this.photo)
+      .then(newResistance => {
+        this.isSubmitting = false;
+        this.agentName = '';
+        this.photo = '';
+        this.ea.publish('resistance.created', newResistance);
+      });
   }
 }

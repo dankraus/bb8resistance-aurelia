@@ -7,8 +7,8 @@ export class TargetStoresService {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        // .withBaseUrl('http://bb8-resistance-api.azurewebsites.net/api/');
-        .withBaseUrl('http://192.168.1.135:3005/api/');
+        .withBaseUrl('http://bb8-resistance-api.azurewebsites.net/api/');
+        // .withBaseUrl('http://192.168.1.44:3005/api/');
     });
 
     this.http = http;
