@@ -21,6 +21,7 @@ function getBundles() {
 }
 
 function getExportList() {
+  console.log(resources.list.concat(getBundles()));
   return resources.list.concat(getBundles());
 }
 
