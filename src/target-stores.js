@@ -27,6 +27,13 @@ export class TargetStores {
     this.ea.subscribe('google-map.marker.clicked', marker => {
       this.isFormVisible = true;
       this.selectedStore = marker.storeData;
+
+      // a hack to scroll the form into view. Needed for mobile because it shows under the map and it's not
+      // clear that the form has been made visible. If I do isFormVisibleChanged(new, old) aurealia lifecycle
+      // function, the DOM hasn't been updated yet to show the visible element. The scroll function has nothing
+      // to scroll into view yet. The DOM changes quick so this timeout shouldn't be too much delay.
+      setTimeout(time => document.getElementById('resistanceForm').scrollIntoView(), 750);
+
       this.resistanceService.findByStoreNumber(this.selectedStore.storeNumber)
         .then(resistances => this.selectedStoreResistances = resistances );
     });
