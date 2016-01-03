@@ -1,0 +1,17 @@
+<template>
+	<section class="au-animate">
+	    <h2>Resistance Gallery</h2>
+
+	    <div class="resistance col-sm-6 col-md-3 card-container" repeat.for="resistance of resistances">
+			<div class="card">
+	          <div class="content">
+	          	<img if.bind="resistance.url" src="${resistance.url}" alt="${resistance.agentName}">
+	            <p class="name">${resistance.agentName}</p>
+	            <p class="name">Store #${resistance.storeNumber}</p>
+	            <p class="name">${resistance.store.state}</p>
+	            <p class="name">${resistance.store.city}</p>
+	          </div>
+	        </div>
+		</div>
+	</section>
+</template>
