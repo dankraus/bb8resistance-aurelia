@@ -22,7 +22,7 @@ export function configure(aurelia) {
           }
         }
       });
-  });
+    });
 
   //Uncomment the line below to enable animation.
   //aurelia.use.plugin('aurelia-animator-css');
