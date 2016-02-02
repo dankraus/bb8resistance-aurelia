@@ -3,7 +3,26 @@ import 'bootstrap';
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging();
+    .developmentLogging()
+    .plugin('aurelia-google-analytics', config => {
+      config.init('UA-73216811-1');
+      config.attach({
+        logging: {
+          enabled: true
+        },
+        pageTracking: {
+          enabled: true
+        },
+        clickTracking: {
+          enabled: true,
+          filter: (element) => {
+            return element instanceof HTMLElement &&
+              (element.nodeName.toLowerCase() === 'a' ||
+              element.nodeName.toLowerCase() === 'button');
+          }
+        }
+      });
+  });
 
   //Uncomment the line below to enable animation.
   //aurelia.use.plugin('aurelia-animator-css');

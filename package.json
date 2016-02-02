@@ -62,6 +62,7 @@
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1.0.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.0.3",
+      "aurelia-google-analytics": "github:miguelzakharia/aurelia-google-analytics@^1.0.1",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0-beta.1.0.1",
       "aurelia-html-import-template-loader": "npm:aurelia-html-import-template-loader@^1.0.0-beta.1",
       "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1",
