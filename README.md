@@ -7,6 +7,8 @@ Upload your photo touching the Star Wars BB-8 Target Store display. Defy the 'Do
 
 This app is my first go with working with [Aurelia](http://www.aurelia.io/). It's based on the [Aurelia Skeleton Nav App](https://github.com/aurelia/skeleton-navigation).
 
+**Note:** I've taken down the site for now. The BB-8's were taken down at Target and most met their demise in trash compactors. I decided to cut some server costs down.
+
 ## Running The App
 
 To run the app, follow these steps.
